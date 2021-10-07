@@ -48,12 +48,13 @@ namespace WordAnalyzer
             {
                 item.Start();
             }
-            watch2.Stop();
 
             foreach (var item in threads)
             {
                 item.Join();
             }
+            watch2.Stop();
+
 
             Console.WriteLine($"The time of paralel execution is {watch2.ElapsedMilliseconds}");
         }
