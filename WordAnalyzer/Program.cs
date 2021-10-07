@@ -90,14 +90,7 @@ namespace WordAnalyzer
         {
             var query = text.GroupBy(x => x).Select(x => new { KeyField = x.Key, Count = x.Count() }).OrderByDescending(x => x.Count).Take(5);
 
-            var fiveWords = query.ToArray();
-
-            List<string> list = new();
-
-            foreach (var item in fiveWords)
-            {
-                list.Add(item.KeyField);
-            }
+            IEnumerable<string> list = query.ToList().Select(c => c.KeyField);
 
             string words = String.Join(',', list);
 
@@ -108,14 +101,7 @@ namespace WordAnalyzer
         {
             var query = text.GroupBy(x => x).Select(x => new { KeyField = x.Key, Count = x.Count() }).OrderBy(x => x.Count).Take(5);
 
-            var fiveWords = query.ToArray();
-
-            List<string> list = new();
-
-            foreach (var item in fiveWords)
-            {
-                list.Add(item.KeyField);
-            }
+            IEnumerable<string> list = query.ToList().Select(c => c.KeyField);
 
             string words = String.Join(',', list);
 
